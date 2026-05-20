@@ -3,527 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>H-MAX Educational Coaching and Consultancy</title>
+  <title>H-MAX Educational Coaching & Consultancy</title>
+  <meta name="description" content="H-MAX Educational Coaching & Consultancy - पढ़ाई भी, भविष्य भी" />
+  <link rel="icon" href="#" id="dynamicFavicon" />
   <style>
-    :root {
-      --primary: #1e40af;
-      --secondary: #0ea5e9;
-      --accent: #f59e0b;
-      --bg: #f8fafc;
-      --text: #0f172a;
-      --muted: #475569;
-      --white: #ffffff;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(2, 6, 23, 0.1);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 70px;
-      gap: 16px;
-    }
-
-    .brand {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--primary);
-      text-decoration: none;
-      letter-spacing: .2px;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      transition: color .2s ease;
-    }
-
-    nav a:hover { color: var(--secondary); }
-
-    .menu-btn {
-      display: none;
-      border: none;
-      background: transparent;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--primary);
-    }
-
-    .hero {
-      background: linear-gradient(120deg, rgba(30,64,175,.95), rgba(14,165,233,.9)),
-        radial-gradient(circle at right, rgba(255,255,255,.25), transparent 40%);
-      color: var(--white);
-      padding: 84px 0 72px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin-bottom: 14px; }
-    .hero p { font-size: 1.05rem; opacity: .95; margin-bottom: 24px; max-width: 62ch; }
-
-    .btn-wrap { display: flex; flex-wrap: wrap; gap: 12px; }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.15); }
-    .btn-primary { background: var(--accent); color: #1f2937; }
-    .btn-light { background: #fff; color: var(--primary); }
-
-    .hero-card {
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.25);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
-    .hero-card ul { padding-left: 1.1rem; }
-
-    section { padding: 72px 0; }
-    .section-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin-bottom: 10px;
-      color: var(--primary);
-    }
-    .section-sub { color: var(--muted); margin-bottom: 28px; }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-      border: 1px solid #e2e8f0;
-      height: 100%;
-    }
-
-    .card h3 { margin-bottom: 10px; color: #1d4ed8; }
-    .tag {
-      display: inline-block;
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: .84rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .list { padding-left: 1rem; }
-    .list li { margin-bottom: 8px; }
-
-    .faculty-grid, .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .faculty .card p:first-of-type { font-weight: 700; color: #334155; }
-    .quote { font-style: italic; color: #334155; }
-
-    form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .full { grid-column: 1 / -1; }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      font: inherit;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      outline: 2px solid #bfdbfe;
-      border-color: #60a5fa;
-    }
-
-    textarea { min-height: 120px; resize: vertical; }
-
-    .submit-btn {
-      border: none;
-      cursor: pointer;
-      background: var(--primary);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-weight: 700;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    footer {
-      background: #0f172a;
-      color: #e2e8f0;
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-    }
-
-    .whatsapp-btn {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 999;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #25D366;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 12px 20px rgba(0,0,0,.2);
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .success-msg {
-      margin-top: 12px;
-      font-weight: 700;
-      color: #15803d;
-      display: none;
-    }
-
-    @media (max-width: 920px) {
-      .hero-grid,
-      .about-grid,
-      .contact-grid,
-      .card-grid,
-      .faculty-grid,
-      .testimonial-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      nav ul { gap: 12px; }
-    }
-
-    @media (max-width: 700px) {
-      .menu-btn { display: block; }
-      nav ul {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-bottom: 1px solid #e2e8f0;
-        flex-direction: column;
-        padding: 14px 4%;
-        display: none;
-      }
-      nav ul.open { display: flex; }
-
-      .hero,
-      section { padding: 58px 0; }
-
-      .hero-grid,
-      .about-grid,
-      .contact-grid,
-      .card-grid,
-      .faculty-grid,
-      .testimonial-grid,
-      form {
-        grid-template-columns: 1fr;
-      }
-    }
+    :root{--blue:#0b3b8f;--blue2:#1f68d3;--sky:#eaf2ff;--white:#fff;--text:#0f1c35;--muted:#5a6b88;--shadow:0 12px 32px rgba(13,42,96,.16);--r:18px}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:#f7faff;color:var(--text);line-height:1.6}
+    .container{width:min(1140px,92%);margin:auto}.section{padding:78px 0}.title{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--blue);margin-bottom:8px}.sub{color:var(--muted);margin-bottom:26px}
+    header{position:sticky;top:0;z-index:999;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #dbe7ff}
+    .nav{display:flex;justify-content:space-between;align-items:center;min-height:74px;gap:16px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--blue);font-weight:800}
+    .logo{width:48px;height:48px;border-radius:50%;box-shadow:0 4px 14px rgba(13,42,96,.25)} nav ul{display:flex;list-style:none;gap:18px}nav a{text-decoration:none;color:var(--text);font-weight:600;position:relative}
+    nav a:after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--blue2);transition:.25s}nav a:hover:after{width:100%}
+    .menu{display:none;border:none;background:none;font-size:1.6rem;color:var(--blue)}
+    .hero{background:linear-gradient(130deg,#0b3b8f,#1f68d3);color:#fff;padding:92px 0 74px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.22),transparent 35%)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;position:relative}.hero h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.12}.tagline{font-size:clamp(1.1rem,2.6vw,1.6rem);margin:10px 0 18px;font-weight:700;color:#dbeafe}
+    .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.btn{padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:700;transition:.28s transform,.28s box-shadow}.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.primary{background:#ffb703;color:#1b2331}.ghost{background:#fff;color:var(--blue)}
+    .glass{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:22px;border-radius:var(--r)}
+    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.card{background:#fff;border:1px solid #dce8ff;border-radius:var(--r);padding:22px;box-shadow:0 8px 24px rgba(16,49,112,.09);transition:.25s}.card:hover{transform:translateY(-6px)}
+    .badge{display:inline-block;background:#e6efff;color:var(--blue);font-weight:800;padding:5px 11px;border-radius:999px;margin-bottom:8px;font-size:.84rem}
+    .icon{font-size:1.3rem;margin-right:8px}.faculty{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}.avatar{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;margin-bottom:10px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}form{display:grid;grid-template-columns:1fr 1fr;gap:14px}input,select,textarea{padding:12px;border-radius:11px;border:1px solid #c5d8ff;font:inherit}textarea{min-height:120px;resize:vertical}.full{grid-column:1/-1}
+    .submit{border:none;background:var(--blue);color:#fff;font-weight:700;padding:12px;border-radius:12px;cursor:pointer}
+    .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.gallery img{width:100%;height:190px;object-fit:cover;border-radius:14px}
+    .cta{background:linear-gradient(120deg,#eff5ff,#dbe8ff);border:1px solid #cfe0ff;border-radius:var(--r);padding:24px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+    footer{background:#071d47;color:#e7eeff;padding:30px 0;margin-top:36px}.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}.mini{width:52px;height:52px;border-radius:50%;margin-bottom:10px}
+    .wa{position:fixed;right:16px;bottom:16px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-size:1.35rem;box-shadow:var(--shadow);z-index:999}
+    .reveal{opacity:0;transform:translateY(18px);transition:.7s}.reveal.show{opacity:1;transform:translateY(0)}
+    @media(max-width:980px){.grid3,.faculty{grid-template-columns:repeat(2,1fr)}.hero-grid,.split,.foot{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.menu{display:block}nav ul{display:none;position:absolute;left:0;right:0;top:74px;background:#fff;padding:12px 4%;flex-direction:column;border-bottom:1px solid #dbe7ff}nav ul.open{display:flex}.grid3,.faculty,.gallery,form{grid-template-columns:1fr}.section{padding:58px 0}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a href="#home" class="brand">H-MAX Educational Coaching & Consultancy</a>
-      <button class="menu-btn" aria-label="Toggle Menu" id="menuBtn">☰</button>
-      <nav>
-        <ul id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#coaching">Coaching</a></li>
-          <li><a href="#consultancy">Consultancy</a></li>
-          <li><a href="#faculty">Faculty</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#admission">Admission</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <header><div class="container nav"><a class="brand" href="#home"><img class="logo brand-logo" alt="H-MAX Logo"/><span>H-MAX Educational Coaching & Consultancy</span></a><button id="menu" class="menu">☰</button><nav><ul id="nav"><li><a href="#home">Home</a></li><li><a href="#coaching">Coaching</a></li><li><a href="#consultancy">Consultancy</a></li><li><a href="#faculty">Faculty</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#admission">Admission</a></li><li><a href="#contact">Contact</a></li></ul></nav></div></header>
+  <section class="hero" id="home"><div class="container hero-grid"><div><img class="logo" style="width:78px;height:78px;margin-bottom:12px" alt="H-MAX Brand Logo"/><h1>H-MAX Educational Coaching & Consultancy</h1><p class="tagline">पढ़ाई भी, भविष्य भी</p><p>Premium coaching and trusted educational consultancy for school students and career aspirants. We combine disciplined teaching, personal mentoring and practical admission guidance.</p><div class="btns"><a class="btn primary" href="#admission">Admission Now</a><a class="btn ghost" href="https://wa.me/918789178617" target="_blank">WhatsApp Us</a></div></div><aside class="glass"><h3>Why Students Trust H-MAX</h3><ul><li>✔ Smart classroom approach</li><li>✔ Test series + practice analysis</li><li>✔ Quality notes & daily doubt support</li><li>✔ Experienced, student-focused teachers</li></ul></aside></div></section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <h1>Empowering Students with Expert Coaching & Smart Career Guidance</h1>
-          <p>
-            Welcome to <strong>H-MAX Educational Coaching and Consultancy</strong> — your trusted partner for academic excellence and informed educational decisions.
-            We guide students from school-level preparation to future-ready career planning.
-          </p>
-          <div class="btn-wrap">
-            <a href="#admission" class="btn btn-primary">Admission Enquiry</a>
-            <a href="#consultancy" class="btn btn-light">Explore Consultancy</a>
-          </div>
-        </div>
-        <aside class="hero-card">
-          <h3>Why Choose H-MAX?</h3>
-          <ul>
-            <li>Experienced faculty with subject expertise</li>
-            <li>Dedicated coaching batches by class level</li>
-            <li>Personalized consultancy for admissions & careers</li>
-            <li>Student-first, growth-focused learning environment</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
+  <section class="section reveal" id="coaching"><div class="container"><h2 class="title">Coaching Division</h2><p class="sub">Structured batches with complete academic support.</p><div class="grid3"><article class="card"><span class="badge">Batch</span><h3>1 to 5</h3><p>All Subjects</p></article><article class="card"><span class="badge">Batch</span><h3>6 to 8</h3><p>All Subjects</p></article><article class="card"><span class="badge">Batch</span><h3>9 & 10</h3><p>Mathematics & Science</p></article><article class="card"><span class="badge">Batch</span><h3>11 & 12</h3><p>Mathematics Only</p></article><article class="card"><h3>Support System</h3><p>Test series support, quality notes, daily doubt sessions and regular progress tracking.</p></article><article class="card"><h3>Faculty Strength</h3><p>Experienced teachers with concept clarity, personalized attention and board exam strategies.</p></article></div></div></section>
 
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">About Us</h2>
-        <p class="section-sub">Building strong academic foundations and brighter career pathways.</p>
-        <div class="about-grid">
-          <div class="card">
-            <h3>Our Mission</h3>
-            <p>
-              At H-MAX, we are committed to offering quality education support through structured coaching and practical consultancy services.
-              We focus on conceptual clarity, confidence building, and holistic guidance so every student can reach their potential.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Our Core Values</h3>
-            <ul class="list">
-              <li>Academic Integrity & Excellence</li>
-              <li>Student-Centered Teaching</li>
-              <li>Personalized Career Roadmapping</li>
-              <li>Transparent and Supportive Mentorship</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+  <section class="section reveal" id="consultancy"><div class="container"><h2 class="title">Consultancy Division</h2><p class="sub">Complete admission and career support services.</p><div class="grid3"><article class="card">🎓 College Admission Guidance</article><article class="card">🏫 10th/12th Admission</article><article class="card">🩺 ANM/GNM/PARAMEDICAL Admission</article><article class="card">🛠 ITI/Polytechnic Admission</article><article class="card">📘 B.Ed./D.El.Ed. Admission</article><article class="card">💡 Scholarship Guidance</article><article class="card">📝 Form Fill-up</article><article class="card">🧭 Career Counseling</article></div></div></section>
 
-    <section id="coaching">
-      <div class="container">
-        <h2 class="section-title">Coaching Division</h2>
-        <p class="section-sub">Specialized batches designed to match learning levels and board requirements.</p>
-        <div class="card-grid">
-          <article class="card">
-            <span class="tag">Batch 01</span>
-            <h3>Class 1 to 5</h3>
-            <p>All Subjects</p>
-          </article>
-          <article class="card">
-            <span class="tag">Batch 02</span>
-            <h3>Class 6 to 8</h3>
-            <p>All Subjects</p>
-          </article>
-          <article class="card">
-            <span class="tag">Batch 03</span>
-            <h3>Class 9 & 10</h3>
-            <p>Mathematics and Science</p>
-          </article>
-          <article class="card">
-            <span class="tag">Batch 04</span>
-            <h3>Class 11 & 12</h3>
-            <p>Mathematics Only</p>
-          </article>
-        </div>
-      </div>
-    </section>
+  <section class="section reveal" id="faculty"><div class="container"><h2 class="title">Our Faculty</h2><p class="sub">Professional educators committed to results.</p><div class="faculty"><article class="card"><img class="avatar" src="https://images.unsplash.com/photo-1600878459108-617a253537e9?auto=format&fit=crop&w=400&q=60"><h4>Sumit Sir</h4></article><article class="card"><img class="avatar" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=60"><h4>Sagar Sir</h4></article><article class="card"><img class="avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=60"><h4>Shrishti Ma'am</h4></article><article class="card"><img class="avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=60"><h4>Ritika Ma'am</h4></article><article class="card"><img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=60"><h4>Shreya Ma'am</h4></article></div></div></section>
 
-    <section id="consultancy">
-      <div class="container">
-        <h2 class="section-title">Consultancy Division</h2>
-        <p class="section-sub">End-to-end academic and career support services.</p>
-        <div class="card-grid">
-          <article class="card"><h3>Admission Guidance</h3><p>Get structured support to shortlist and apply to suitable institutions.</p></article>
-          <article class="card"><h3>Course Selection</h3><p>Choose streams and courses aligned with aptitude, goals, and opportunities.</p></article>
-          <article class="card"><h3>Career Counseling</h3><p>Expert mentoring sessions to build a clear and realistic career pathway.</p></article>
-          <article class="card"><h3>College Admission Support</h3><p>Document planning, timeline tracking, and admission strategy support.</p></article>
-          <article class="card"><h3>Form Fill-up Assistance</h3><p>Error-free application form submission guidance for school and college admissions.</p></article>
-          <article class="card"><h3>Scholarship Guidance</h3><p>Information and application assistance for scholarships and financial aid opportunities.</p></article>
-        </div>
-      </div>
-    </section>
+  <section class="section reveal"><div class="container"><h2 class="title">Features</h2><div class="grid3"><div class="card">👩‍🏫 Experienced Faculty</div><div class="card">🧪 Test Series</div><div class="card">📒 Quality Notes</div><div class="card">🎯 Career Guidance</div><div class="card">💰 Affordable Fees</div><div class="card">🤝 Student Support</div></div></div></section>
 
-    <section id="faculty" class="faculty">
-      <div class="container">
-        <h2 class="section-title">Our Faculty</h2>
-        <p class="section-sub">Dedicated educators focused on conceptual understanding and results.</p>
-        <div class="faculty-grid">
-          <article class="card"><h3>Mr. Arindam Sen</h3><p>Mathematics Mentor</p><p>10+ years of experience in secondary and senior-secondary mathematics coaching.</p></article>
-          <article class="card"><h3>Ms. Priya Sharma</h3><p>Science Educator</p><p>Hands-on and concept-driven teaching approach for classes 9 & 10 science.</p></article>
-          <article class="card"><h3>Mr. Ravi Kumar</h3><p>Academic Counselor</p><p>Specialist in admission advisory, course planning, and student counseling.</p></article>
-        </div>
-      </div>
-    </section>
+  <section class="section reveal" id="testimonials"><div class="container"><h2 class="title">Student Testimonials</h2><div class="grid3"><article class="card"><p>“H-MAX ki test series ne mera confidence bahut badhaya. Board mein excellent marks aaye.”</p><strong>— Aman Kumar</strong></article><article class="card"><p>“Notes concise aur easy the. Doubt sessions bahut useful rahe.”</p><strong>— Priya Singh</strong></article><article class="card"><p>“Career counseling aur admission guidance se sahi college choose kar paya.”</p><strong>— Ravi Raj</strong></article><article class="card"><p>“Teachers ka support aur regular monitoring se padhai disciplined ho gayi.”</p><strong>— Neha Kumari</strong></article></div></div></section>
 
-    <section id="testimonials">
-      <div class="container">
-        <h2 class="section-title">Student Testimonials</h2>
-        <p class="section-sub">What learners and parents say about H-MAX.</p>
-        <div class="testimonial-grid">
-          <article class="card">
-            <p class="quote">“The math classes at H-MAX improved my confidence and grades within a few months.”</p>
-            <p><strong>— Ayan, Class 10</strong></p>
-          </article>
-          <article class="card">
-            <p class="quote">“Career counseling sessions helped us choose the right stream after class 10.”</p>
-            <p><strong>— Parent of Riya</strong></p>
-          </article>
-          <article class="card">
-            <p class="quote">“The admission support process was smooth and organized. Highly recommended!”</p>
-            <p><strong>— Snehashis, Undergraduate Student</strong></p>
-          </article>
-        </div>
-      </div>
-    </section>
+  <section class="section reveal" id="gallery"><div class="container"><h2 class="title">Gallery</h2><div class="gallery"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=60"></div></div></section>
 
-    <section id="admission">
-      <div class="container">
-        <h2 class="section-title">Admission Enquiry Form</h2>
-        <p class="section-sub">Fill in your details and our team will contact you shortly.</p>
-        <div class="card">
-          <form id="enquiryForm">
-            <input type="text" name="name" placeholder="Student Name" required />
-            <input type="tel" name="phone" placeholder="Phone Number" required />
-            <input type="email" name="email" placeholder="Email Address" required />
-            <select name="interest" required>
-              <option value="">Select Interested Division</option>
-              <option>Coaching Division</option>
-              <option>Consultancy Division</option>
-            </select>
-            <select name="class" required>
-              <option value="">Select Class / Service</option>
-              <option>Class 1 to 5</option>
-              <option>Class 6 to 8</option>
-              <option>Class 9 & 10</option>
-              <option>Class 11 & 12</option>
-              <option>Consultancy Service</option>
-            </select>
-            <textarea class="full" name="message" placeholder="Write your query..." required></textarea>
-            <button type="submit" class="submit-btn full">Submit Enquiry</button>
-          </form>
-          <p class="success-msg" id="successMsg">Thank you! Your enquiry has been submitted successfully.</p>
-        </div>
-      </div>
-    </section>
+  <section class="section reveal" id="admission"><div class="container"><h2 class="title">Online Admission Enquiry</h2><div class="card"><form><input required placeholder="Student Name"><input required placeholder="Mobile Number"><input required placeholder="Class/Course"><select required><option value="">Service Required</option><option>Coaching</option><option>Consultancy</option></select><textarea class="full" placeholder="Message"></textarea><button class="submit full" type="submit">Submit Enquiry</button></form></div></div></section>
 
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact Us</h2>
-        <p class="section-sub">We are here to help you with coaching and educational consultancy.</p>
-        <div class="contact-grid">
-          <div class="card">
-            <h3>Office Details</h3>
-            <p><strong>Address:</strong> Your Local Area, City, State</p>
-            <p><strong>Phone:</strong> +91 90000 00000</p>
-            <p><strong>Email:</strong> contact@hmaxeducation.com</p>
-            <p><strong>Working Hours:</strong> Mon - Sat, 8:00 AM - 8:00 PM</p>
-          </div>
-          <div class="card">
-            <h3>Quick Connect</h3>
-            <p>Reach out via WhatsApp or submit the enquiry form for fast assistance.</p>
-            <a class="btn btn-primary" href="#admission">Start Admission Enquiry</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <section class="section reveal"><div class="container"><div class="cta"><div><h3>Fee Enquiry</h3><p>Get transparent fee details for your selected class/course.</p></div><a class="btn primary" href="tel:8789178617">Call for Fee Details</a></div></div></section>
 
-  <a class="whatsapp-btn" href="https://wa.me/919000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">✆</a>
+  <section class="section reveal"><div class="container"><h2 class="title">Notes & Test Series</h2><div class="grid3"><div class="card"><h3>Notes Download</h3><p>Subject-wise concise notes for revision and practice.</p></div><div class="card"><h3>Test Series</h3><p>Weekly tests with performance analysis and ranking.</p></div><div class="card"><h3>Practice Materials</h3><p>Chapter-wise worksheets and exam-oriented assignments.</p></div></div></div></section>
 
-  <footer>
-    <p>© <span id="year"></span> H-MAX Educational Coaching and Consultancy. All Rights Reserved.</p>
-  </footer>
+  <section class="section reveal"><div class="container"><h2 class="title">Student Results & Highlights</h2><div class="grid3"><div class="card"><h3>92%+ Achievers</h3><p>Multiple students scoring above 92% in board-focused preparation.</p></div><div class="card"><h3>Math Improvement</h3><p>Consistent improvement in core math performance through targeted drills.</p></div><div class="card"><h3>Successful Admissions</h3><p>Students guided into school, diploma and professional courses successfully.</p></div></div></div></section>
 
+  <section class="section reveal" id="contact"><div class="container"><h2 class="title">Contact Us</h2><div class="split"><div class="card"><p><strong>Mobile:</strong> <a href="tel:8789178617">8789178617</a></p><p><strong>WhatsApp:</strong> <a href="https://wa.me/918789178617">8789178617</a></p><p><strong>Address:</strong> Near Rly. No. 2 Ground, Janta More, Jamalpur, Munger, Bihar</p><p><strong>Timing:</strong> 10:30 AM to 6:30 PM</p><div class="btns"><a class="btn primary" href="https://maps.app.goo.gl/msUw3tqoK6aWkuKL" target="_blank">Google Map</a><a class="btn ghost" href="tel:8789178617">Call Now</a></div></div><div class="card"><h3>Quick Contact Form</h3><form><input placeholder="Your Name" required><input placeholder="Mobile" required><textarea class="full" placeholder="Your message" required></textarea><button class="submit full">Send Message</button></form></div></div></div></section>
+
+  <footer><div class="container foot"><div><img class="mini brand-logo" alt="H-MAX footer logo"><h3>H-MAX Educational Coaching & Consultancy</h3><p>पढ़ाई भी, भविष्य भी</p></div><div><h4>Quick Links</h4><p>Coaching</p><p>Consultancy</p><p>Admission</p></div><div><h4>Connect</h4><p>+91 8789178617</p><p>Jamalpur, Munger</p></div></div></footer>
+  <a class="wa" href="https://wa.me/918789178617" target="_blank" aria-label="WhatsApp">✆</a>
   <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
-
-    const form = document.getElementById('enquiryForm');
-    const successMsg = document.getElementById('successMsg');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      successMsg.style.display = 'block';
-      form.reset();
-      setTimeout(() => {
-        successMsg.style.display = 'none';
-      }, 4000);
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const logoSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><circle cx='64' cy='64' r='62' fill='white'/><circle cx='64' cy='64' r='56' fill='none' stroke='#0b3b8f' stroke-width='12'/><text x='64' y='23' text-anchor='middle' font-size='10' fill='#0b3b8f' font-weight='700'>H-MAX</text><path d='M35 84h58l-29-20z' fill='#111'/><path d='M48 92h32' stroke='#111' stroke-width='3'/><circle cx='53' cy='61' r='9' fill='#f59e0b'/><circle cx='75' cy='61' r='9' fill='#0b3b8f'/></svg>`;
+    const logoData = `data:image/svg+xml;utf8,${encodeURIComponent(logoSvg)}`;
+    document.querySelectorAll('.brand-logo,.logo,.mini').forEach(el=>el.src=logoData);
+    document.getElementById('dynamicFavicon').href=logoData;
+    const m=document.getElementById('menu'),n=document.getElementById('nav');m.onclick=()=>n.classList.toggle('open');n.querySelectorAll('a').forEach(a=>a.onclick=()=>n.classList.remove('open'));
+    const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
   </script>
 </body>
 </html>
