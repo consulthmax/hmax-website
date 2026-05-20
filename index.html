@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H-MAX Educational Coaching and Consultancy</title>
+  <style>
+    :root {
+      --primary: #1e40af;
+      --secondary: #0ea5e9;
+      --accent: #f59e0b;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #475569;
+      --white: #ffffff;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 70px;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: .2px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+
+    nav a:hover { color: var(--secondary); }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    .hero {
+      background: linear-gradient(120deg, rgba(30,64,175,.95), rgba(14,165,233,.9)),
+        radial-gradient(circle at right, rgba(255,255,255,.25), transparent 40%);
+      color: var(--white);
+      padding: 84px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin-bottom: 14px; }
+    .hero p { font-size: 1.05rem; opacity: .95; margin-bottom: 24px; max-width: 62ch; }
+
+    .btn-wrap { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.15); }
+    .btn-primary { background: var(--accent); color: #1f2937; }
+    .btn-light { background: #fff; color: var(--primary); }
+
+    .hero-card {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+    .hero-card ul { padding-left: 1.1rem; }
+
+    section { padding: 72px 0; }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .section-sub { color: var(--muted); margin-bottom: 28px; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      height: 100%;
+    }
+
+    .card h3 { margin-bottom: 10px; color: #1d4ed8; }
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: .84rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .list { padding-left: 1rem; }
+    .list li { margin-bottom: 8px; }
+
+    .faculty-grid, .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .faculty .card p:first-of-type { font-weight: 700; color: #334155; }
+    .quote { font-style: italic; color: #334155; }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #bfdbfe;
+      border-color: #60a5fa;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .submit-btn {
+      border: none;
+      cursor: pointer;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #e2e8f0;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 999;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 12px 20px rgba(0,0,0,.2);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .success-msg {
+      margin-top: 12px;
+      font-weight: 700;
+      color: #15803d;
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .card-grid,
+      .faculty-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      nav ul { gap: 12px; }
+    }
+
+    @media (max-width: 700px) {
+      .menu-btn { display: block; }
+      nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid #e2e8f0;
+        flex-direction: column;
+        padding: 14px 4%;
+        display: none;
+      }
+      nav ul.open { display: flex; }
+
+      .hero,
+      section { padding: 58px 0; }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .card-grid,
+      .faculty-grid,
+      .testimonial-grid,
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand">H-MAX Educational Coaching & Consultancy</a>
+      <button class="menu-btn" aria-label="Toggle Menu" id="menuBtn">☰</button>
+      <nav>
+        <ul id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#coaching">Coaching</a></li>
+          <li><a href="#consultancy">Consultancy</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#admission">Admission</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <h1>Empowering Students with Expert Coaching & Smart Career Guidance</h1>
+          <p>
+            Welcome to <strong>H-MAX Educational Coaching and Consultancy</strong> — your trusted partner for academic excellence and informed educational decisions.
+            We guide students from school-level preparation to future-ready career planning.
+          </p>
+          <div class="btn-wrap">
+            <a href="#admission" class="btn btn-primary">Admission Enquiry</a>
+            <a href="#consultancy" class="btn btn-light">Explore Consultancy</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h3>Why Choose H-MAX?</h3>
+          <ul>
+            <li>Experienced faculty with subject expertise</li>
+            <li>Dedicated coaching batches by class level</li>
+            <li>Personalized consultancy for admissions & careers</li>
+            <li>Student-first, growth-focused learning environment</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-sub">Building strong academic foundations and brighter career pathways.</p>
+        <div class="about-grid">
+          <div class="card">
+            <h3>Our Mission</h3>
+            <p>
+              At H-MAX, we are committed to offering quality education support through structured coaching and practical consultancy services.
+              We focus on conceptual clarity, confidence building, and holistic guidance so every student can reach their potential.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Our Core Values</h3>
+            <ul class="list">
+              <li>Academic Integrity & Excellence</li>
+              <li>Student-Centered Teaching</li>
+              <li>Personalized Career Roadmapping</li>
+              <li>Transparent and Supportive Mentorship</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="coaching">
+      <div class="container">
+        <h2 class="section-title">Coaching Division</h2>
+        <p class="section-sub">Specialized batches designed to match learning levels and board requirements.</p>
+        <div class="card-grid">
+          <article class="card">
+            <span class="tag">Batch 01</span>
+            <h3>Class 1 to 5</h3>
+            <p>All Subjects</p>
+          </article>
+          <article class="card">
+            <span class="tag">Batch 02</span>
+            <h3>Class 6 to 8</h3>
+            <p>All Subjects</p>
+          </article>
+          <article class="card">
+            <span class="tag">Batch 03</span>
+            <h3>Class 9 & 10</h3>
+            <p>Mathematics and Science</p>
+          </article>
+          <article class="card">
+            <span class="tag">Batch 04</span>
+            <h3>Class 11 & 12</h3>
+            <p>Mathematics Only</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="consultancy">
+      <div class="container">
+        <h2 class="section-title">Consultancy Division</h2>
+        <p class="section-sub">End-to-end academic and career support services.</p>
+        <div class="card-grid">
+          <article class="card"><h3>Admission Guidance</h3><p>Get structured support to shortlist and apply to suitable institutions.</p></article>
+          <article class="card"><h3>Course Selection</h3><p>Choose streams and courses aligned with aptitude, goals, and opportunities.</p></article>
+          <article class="card"><h3>Career Counseling</h3><p>Expert mentoring sessions to build a clear and realistic career pathway.</p></article>
+          <article class="card"><h3>College Admission Support</h3><p>Document planning, timeline tracking, and admission strategy support.</p></article>
+          <article class="card"><h3>Form Fill-up Assistance</h3><p>Error-free application form submission guidance for school and college admissions.</p></article>
+          <article class="card"><h3>Scholarship Guidance</h3><p>Information and application assistance for scholarships and financial aid opportunities.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faculty" class="faculty">
+      <div class="container">
+        <h2 class="section-title">Our Faculty</h2>
+        <p class="section-sub">Dedicated educators focused on conceptual understanding and results.</p>
+        <div class="faculty-grid">
+          <article class="card"><h3>Mr. Arindam Sen</h3><p>Mathematics Mentor</p><p>10+ years of experience in secondary and senior-secondary mathematics coaching.</p></article>
+          <article class="card"><h3>Ms. Priya Sharma</h3><p>Science Educator</p><p>Hands-on and concept-driven teaching approach for classes 9 & 10 science.</p></article>
+          <article class="card"><h3>Mr. Ravi Kumar</h3><p>Academic Counselor</p><p>Specialist in admission advisory, course planning, and student counseling.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <h2 class="section-title">Student Testimonials</h2>
+        <p class="section-sub">What learners and parents say about H-MAX.</p>
+        <div class="testimonial-grid">
+          <article class="card">
+            <p class="quote">“The math classes at H-MAX improved my confidence and grades within a few months.”</p>
+            <p><strong>— Ayan, Class 10</strong></p>
+          </article>
+          <article class="card">
+            <p class="quote">“Career counseling sessions helped us choose the right stream after class 10.”</p>
+            <p><strong>— Parent of Riya</strong></p>
+          </article>
+          <article class="card">
+            <p class="quote">“The admission support process was smooth and organized. Highly recommended!”</p>
+            <p><strong>— Snehashis, Undergraduate Student</strong></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="admission">
+      <div class="container">
+        <h2 class="section-title">Admission Enquiry Form</h2>
+        <p class="section-sub">Fill in your details and our team will contact you shortly.</p>
+        <div class="card">
+          <form id="enquiryForm">
+            <input type="text" name="name" placeholder="Student Name" required />
+            <input type="tel" name="phone" placeholder="Phone Number" required />
+            <input type="email" name="email" placeholder="Email Address" required />
+            <select name="interest" required>
+              <option value="">Select Interested Division</option>
+              <option>Coaching Division</option>
+              <option>Consultancy Division</option>
+            </select>
+            <select name="class" required>
+              <option value="">Select Class / Service</option>
+              <option>Class 1 to 5</option>
+              <option>Class 6 to 8</option>
+              <option>Class 9 & 10</option>
+              <option>Class 11 & 12</option>
+              <option>Consultancy Service</option>
+            </select>
+            <textarea class="full" name="message" placeholder="Write your query..." required></textarea>
+            <button type="submit" class="submit-btn full">Submit Enquiry</button>
+          </form>
+          <p class="success-msg" id="successMsg">Thank you! Your enquiry has been submitted successfully.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-sub">We are here to help you with coaching and educational consultancy.</p>
+        <div class="contact-grid">
+          <div class="card">
+            <h3>Office Details</h3>
+            <p><strong>Address:</strong> Your Local Area, City, State</p>
+            <p><strong>Phone:</strong> +91 90000 00000</p>
+            <p><strong>Email:</strong> contact@hmaxeducation.com</p>
+            <p><strong>Working Hours:</strong> Mon - Sat, 8:00 AM - 8:00 PM</p>
+          </div>
+          <div class="card">
+            <h3>Quick Connect</h3>
+            <p>Reach out via WhatsApp or submit the enquiry form for fast assistance.</p>
+            <a class="btn btn-primary" href="#admission">Start Admission Enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="whatsapp-btn" href="https://wa.me/919000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">✆</a>
+
+  <footer>
+    <p>© <span id="year"></span> H-MAX Educational Coaching and Consultancy. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    const form = document.getElementById('enquiryForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      successMsg.style.display = 'block';
+      form.reset();
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 4000);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
